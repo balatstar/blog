@@ -1,9 +1,14 @@
 class Like < ApplicationRecord
   belongs_to :user
   belongs_to :post
-  after_save :update_likes_counter
+  after_create :increment_likes_counter
+  after_destroy :decrement_likes_counter
 
-  def update_likes_counter(increment) # increment = true if adding new like, = false if deleting like
-    post.update(likes_counter: post.likes_counter + (increment ? 1 : -1))
+  def increment_likes_counter
+    post.increment!(:likes_counter)
+  end
+
+  def decrement_likes_counter
+    post.decrement!(:likes_counter)
   end
 end
