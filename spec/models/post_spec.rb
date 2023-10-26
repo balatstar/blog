@@ -21,7 +21,7 @@ RSpec.describe Post, type: :model do
 
   it "increments author's posts_counter after create" do
     user = User.create(name: 'Roy Batty', posts_counter: 5)
-    post = Post.create(title: 'Sample Title', author: user)
+    Post.create(title: 'Sample Title', author: user)
     expect(user.reload.posts_counter).to eq(6)
   end
 

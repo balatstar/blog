@@ -25,11 +25,11 @@ RSpec.describe User, type: :model do
     it 'returns the 3 most recent posts' do
       user = User.create(name: 'Roy Batty', posts_counter: 5)
 
-      post1 = user.posts.create(title: 'Post 0', created_at: 3.days.ago)
+      user.posts.create(title: 'Post 0', created_at: 3.days.ago)
       post2 = user.posts.create(title: 'Post 1', created_at: 2.days.ago)
       post3 = user.posts.create(title: 'Post 2', created_at: 1.day.ago)
       post4 = user.posts.create(title: 'Post 3', created_at: Time.current)
-      post5 = user.posts.create(title: 'Post 4', created_at: 4.days.ago)
+      user.posts.create(title: 'Post 4', created_at: 4.days.ago)
       recent_posts = [post4, post3, post2]
 
       expect(user.recent_posts).to eq(recent_posts)
