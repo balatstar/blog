@@ -4,7 +4,7 @@ RSpec.describe Like, type: :model do
   it "increments the post's likes_counter after create" do
     user = User.create(name: 'Roy Batty', posts_counter: 5)
     post = Post.create(title: 'Sample Title', author: user)
-    like = Like.create(user:, post:)
+    Like.create(user:, post:)
     expect(post.reload.likes_counter).to eq(1)
   end
 
