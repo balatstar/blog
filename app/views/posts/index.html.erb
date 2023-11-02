@@ -13,7 +13,7 @@
 
 <div class="user-posts-container row">
   <h3>All Posts</h3>
-  <% @user.posts.each do |post| %>
+  <% @posts.each do |post| %>
     <div class="user-post">
       <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
         <h4><%= post.title %></h4>
@@ -31,7 +31,7 @@
   <% end %>
 </div>
 <div class="post-pagination">
-  <% if @user.posts.any? %>
+  <% if @posts.any? %>
     <%= will_paginate @posts, previous_label: '&laquo; Previous', next_label: 'Next &raquo;' %>
   <% end %>
 </div>
