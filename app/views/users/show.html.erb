@@ -1,15 +1,5 @@
 <h1>User Details</h1>
-<div class="user-container">
-  <div class="user-row row">
-    <div class="user-photo col-sm-4 col-lg-2">
-      <img src=<%= @user.photo %>>
-    </div>
-    <div class="user-description col-sm-8 col-lg-10">
-      <h2><%= @user.name %></h2>
-      <p>Number of posts: <%= @user.posts_counter.to_i %></p>
-    </div>
-  </div>
-</div>
+<%= render 'user', user: @user %>
 
 <div class="user-bio-container row">
   <h3>Bio</h3>
