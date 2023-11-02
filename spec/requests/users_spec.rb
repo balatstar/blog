@@ -7,7 +7,7 @@ RSpec.describe 'Users', type: :request do
       get root_path
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:index)
-      expect(response.body).to include('Here is a list of all users')
+      expect(response.body).to include('<h1>Users</h1>')
     end
   end
 
@@ -17,7 +17,7 @@ RSpec.describe 'Users', type: :request do
       get user_path(user.id)
       expect(response).to have_http_status(:success)
       expect(response).to render_template(:show)
-      expect(response.body).to include('Here are the details for this user')
+      expect(response.body).to include('<h1>User Details</h1>')
     end
   end
 end

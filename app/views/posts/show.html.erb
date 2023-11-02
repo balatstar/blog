@@ -1,1 +1,13 @@
-<h1>Here is the full post</h1>
+<div class="post-full row" >
+  <h1><%= @post.title %> <span class="post-author">by <%= @post.author.name %></span></h1>
+  <p class="user-post-engagements">
+    Comments: <%= @post.comments_counter.to_i %>, Likes: <%= @post.likes_counter.to_i %>
+  </p>
+  <p><%= @post.text %></p>
+</div>
+
+<div class="user-post-comment">
+  <% @post.comments.each do |comment| %>
+      <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+  <% end %>
+</div>

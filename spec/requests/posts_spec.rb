@@ -6,7 +6,7 @@ RSpec.describe 'Posts', type: :request do
       user = User.create(name: 'Name', posts_counter: 0)
       get user_posts_path(user_id: user.id)
       expect(response).to have_http_status(:success)
-      expect(response.body).to include('Here are all of the posts from User')
+      expect(response.body).to include('<h3>All Posts</h3>')
       expect(response).to render_template(:index)
     end
   end
@@ -17,7 +17,7 @@ RSpec.describe 'Posts', type: :request do
       post = Post.create(title: 'Post Title', author_id: user.id, comments_counter: 0, likes_counter: 0)
       get user_post_path(user_id: user.id, id: post.id)
       expect(response).to have_http_status(:success)
-      expect(response.body).to include('Here is the full post')
+      expect(response.body).to include('<div class="post-full row" >')
       expect(response).to render_template(:show)
     end
   end

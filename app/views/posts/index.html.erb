@@ -1,1 +1,37 @@
-<h1>Here are all of the posts from User</h1>
+<h1><%= @user.name %>'s Posts</h1>
+<div class="user-container">
+  <div class="user-row row">
+    <div class="user-photo col-sm-4 col-lg-2">
+      <img src=<%= @user.photo %>>
+    </div>
+    <div class="user-description col-sm-8 col-lg-10">
+      <h2><%= @user.name %></h2>
+      <p>Number of posts: <%= @user.posts_counter.to_i %></p>
+    </div>
+  </div>
+</div>
+
+<div class="user-posts-container row">
+  <h3>All Posts</h3>
+  <% @posts.each do |post| %>
+    <div class="user-post">
+      <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
+        <h4><%= post.title %></h4>
+      <% end %>
+        <p><%= post.text %></p>
+        <p class="user-post-engagements">
+            Comments: <%= post.comments_counter.to_i %>, Likes: <%= post.likes_counter.to_i %>
+        </p>
+    </div>
+    <div class="user-post-comment">
+      <% post.recent_comments.each do |comment| %>
+        <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="post-pagination">
+  <% if @posts.any? %>
+    <%= will_paginate @posts, previous_label: '&laquo; Previous', next_label: 'Next &raquo;' %>
+  <% end %>
+</div>
