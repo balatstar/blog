@@ -10,4 +10,3 @@ class LikesController < ApplicationController
     end
   end
 end
-  
