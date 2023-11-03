@@ -14,6 +14,19 @@ h6 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.header-container {
+  background-color: #ccc;
+}
+
+.header-content {
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.head-button {
+  text-align: right;
+}
+
 .user-container,
 .user-bio-container,
 .user-posts-container,
@@ -49,6 +62,10 @@ h6 {
 
 .user-post-engagements {
   text-align: right;
+}
+
+.user-post-like {
+  margin-top: 20px;
 }
 
 .blog-button {

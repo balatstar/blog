@@ -1,0 +1,13 @@
+<%= form_with(model: [@post, @comment], url: user_post_comments_path(user_id: @post.author.id, post_id: @post.id)) do |form| %>
+    <div>
+      <%= form.label :text, "Add a new comment:" %><br>
+      <%= form.text_area :text %>
+    </div>
+    <div>
+      <%= form.hidden_field :post_id, value: @post.id %> 
+    </div>
+    <div>
+      <%= form.submit "Save" %>
+    </div>
+  <% end %>
+  

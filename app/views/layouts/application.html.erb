@@ -11,12 +11,16 @@
   </head>
 
   <body>
-    <header class="container header-container">
+    <header class="container-fluid header-container">
+      <div class="container header-content row">
+        <div class="col-6 head-title"><a href="/">Blog App</a></div>
+        <div class="col-6 head-button"><a href="/posts/new">New Post</a></div>
+      </div>
     </header>
     <main class="container main-container">
       <%= yield %>
     </main>
-    <footer class="container footer-container">
+    <footer class="container-fluid footer-container">
     </footer>
   </body>
 </html>
