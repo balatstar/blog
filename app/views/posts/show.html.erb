@@ -1,0 +1,23 @@
+<div class="post-full row" >
+  <h1><%= @post.title %> <span class="post-author">by <%= @post.author.name %></span></h1>
+  <p class="user-post-engagements">
+    Comments: <%= @post.comments_counter.to_i %>, Likes: <%= @post.likes_counter.to_i %>
+  </p>
+  <p><%= @post.text %></p>
+</div>
+
+<div class="user-post-like">
+  <% unless current_user.likes.find_by(post: @post) %>
+    <%= form_with(url: user_post_likes_path(@post.author, @post), method: :post) do |form| %>
+      <%= form.submit 'Like this post' %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="user-post-comment">
+  <% @post.comments.each do |comment| %>
+      <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+  <% end %>
+</div>
+
+<%= render 'comments/form', comment: @comment, post: @post %>

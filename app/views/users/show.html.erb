@@ -1,0 +1,28 @@
+<h1>User Details</h1>
+<%= render 'user', user: @user %>
+
+<div class="user-bio-container row">
+  <h3>Bio</h3>
+  <p><%= @user.bio %></p>
+</div>
+
+<div class="user-posts-container row">
+  <h3>Recent Posts</h3>
+  <% @user.recent_posts.each do |post| %>
+    <div class="user-post">
+      <%= link_to "/users/#{@user.id}/posts/#{post.id}" do %>
+        <h4><%= post.title %></h4>
+      <% end %>
+        <p><%= post.text %></p>
+        <p class="user-post-engagements">
+            Comments: <%= post.comments_counter.to_i %>, Likes: <%= post.likes_counter.to_i %>
+        </p>
+    </div>
+  <% end %>
+</div>
+
+<div class="blog-button">
+  <%= link_to "/users/#{@user.id}/posts" do %>
+    See all posts
+  <% end %>
+</div>
