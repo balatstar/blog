@@ -1,0 +1,6 @@
+inherit_from: .rubocop_todo.yml
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/features/post_index_spec.rb'
+    - 'spec/features/post_show_spec.rb'

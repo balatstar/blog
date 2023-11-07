@@ -3,14 +3,14 @@
   <% @users.each do |user| %>
     <div class="user-row row">
       <div class="user-photo col-sm-4 col-lg-2">
-        <%= link_to user_url(user) do %>
+        <a href="/users/<%= user.id %>">
           <img src=<%= user.photo %>>
-        <% end %>
+        </a>
       </div>
       <div class="user-description col-sm-8 col-lg-10">
-        <%= link_to user_url(user) do %>
+        <a href="/users/<%= user.id %>">
           <h2><%= user.name %></h2>
-        <% end %>
+        </a>
         <p>Number of posts: <%= user.posts_counter.to_i %></p>
       </div>
     </div>
