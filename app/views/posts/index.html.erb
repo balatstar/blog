@@ -22,6 +22,16 @@
 </div>
 <div class="post-pagination">
   <% if @posts.any? %>
-    <%= will_paginate @posts, previous_label: '&laquo; Previous', next_label: 'Next &raquo;' %>
+  <% if @posts.any? %>
+  <div class="pagination">
+    <% if @posts.previous_page %>
+      <%= link_to 'Previous', user_posts_path(@user, page: @posts.previous_page) %>
+    <% end %>
+
+    <% if @posts.next_page %>
+      <%= link_to 'Next', user_posts_path(@user, page: @posts.next_page) %>
+    <% end %>
+  </div>
+<% end %>
   <% end %>
 </div>

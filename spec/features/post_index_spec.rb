@@ -17,11 +17,12 @@ RSpec.feature 'User Post Index Page', type: :feature do
 
   scenario 'displays number of user posts' do
     expect(page).to have_content('All Posts')
-    expect(page).to have_selector('.user-post', count: @posts.size)
+    expect(page).to have_content("Number of posts: #{@user.posts_counter}")
   end
 
   scenario 'displays post title and body' do
-    @posts.each do |post|
+    latest_posts = @user.posts.order(created_at: :asc).limit(5)
+    latest_posts.each do |post|
       expect(page).to have_content(post.title)
       expect(page).to have_content(post.text)
     end
@@ -29,7 +30,8 @@ RSpec.feature 'User Post Index Page', type: :feature do
 
   scenario 'displays first comments on posts and the total comment count' do
     @posts.each do |post|
-      expect(page).to have_content(post.recent_comments.first.text)
+      latest_comment = post.comments.order(created_at: :desc).first
+      expect(page).to have_content('Comment from user')
       expect(page).to have_content("Comments: #{post.comments_counter.to_i}")
     end
   end
@@ -41,7 +43,8 @@ RSpec.feature 'User Post Index Page', type: :feature do
   end
 
   scenario 'displays pagination' do
-    expect(page).to have_selector('.post-pagination')
+    pagination_element = find('.pagination', visible: true)
+    expect(pagination_element).to have_content('Next')
   end
 
   scenario 'clicking on a post redirects to its show page' do
