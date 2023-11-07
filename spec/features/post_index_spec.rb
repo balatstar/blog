@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-# rubocop:disable Metrics/BlockLength
 RSpec.feature 'User Post Index Page', type: :feature do
   before do
     @user = create(:user)
@@ -60,4 +59,3 @@ RSpec.feature 'User Post Index Page', type: :feature do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength
