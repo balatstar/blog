@@ -29,7 +29,7 @@ RSpec.feature 'User Index Page', type: :feature do
 
   scenario 'user links to user show page' do
     @users.each do |user|
-      within(".user-container") do
+      within('.user-container') do
         expect(page).to have_link(user.name, href: user_path(user))
       end
     end
