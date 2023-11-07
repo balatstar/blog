@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.feature 'User Post Index Page', type: :feature do
   before do
     @user = create(:user)
@@ -33,7 +34,7 @@ RSpec.feature 'User Post Index Page', type: :feature do
 
     scenario 'displays first comments on posts and the total comment count' do
       @posts.each do |post|
-        latest_comment = post.comments.order(created_at: :desc).first
+        post.comments.order(created_at: :desc).first
         expect(page).to have_content('Comment from user')
         expect(page).to have_content("Comments: #{post.comments_counter.to_i}")
       end
@@ -59,3 +60,4 @@ RSpec.feature 'User Post Index Page', type: :feature do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
