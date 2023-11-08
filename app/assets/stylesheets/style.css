@@ -24,7 +24,13 @@ h6 {
 }
 
 .head-button {
-  text-align: right;
+  text-align: center;
+  height: 50px;
+}
+
+.head-button input {
+  background-color: none;
+  border: none;
 }
 
 .user-container,

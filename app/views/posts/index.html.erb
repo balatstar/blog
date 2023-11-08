@@ -14,10 +14,13 @@
         </p>
     </div>
     <div class="user-post-comment">
-      <% post.recent_comments.includes([:user]).each do |comment| %>
+    <% post.recent_comments.each do |comment| %>
+      <% if comment.user %>
         <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+      <% else %>
+        <p><strong>Anonymous:</strong> <%= comment.text %></p>
       <% end %>
-    </div>
+    <% end %>
   <% end %>
 </div>
 <div class="post-pagination">

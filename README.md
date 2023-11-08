@@ -74,6 +74,11 @@ GitHub: @balatstar<br>
 Twitter: @balatstar<br>
 LinkedIn: Joyce Cruz<br>
 
+#### 👤 Sodeeq Olaide Awoyemi
+GitHub: @Errytagedesign<br>
+Twitter: @errytage<br>
+LinkedIn: errytagedesigns<br>
+
 ## 🔭 Future Features <a name="future-features"></a>
 
 - Sign up new users

@@ -16,7 +16,11 @@
 
 <div class="user-post-comment">
   <% @post.comments.each do |comment| %>
-      <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+    <% if comment.user.present? && comment.user.respond_to?(:name) %>
+    <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+  <% else %>
+    <p><strong>Anonymous:</strong> <%= comment.text %></p>
+  <% end %>
   <% end %>
 </div>
 
