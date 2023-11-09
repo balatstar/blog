@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css");
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -110,4 +110,22 @@ h6 {
 
 .post-author {
   font-size: 14px;
+}
+
+.devise-container {
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.devise-container input,
+.devise-container button {
+  margin: 10px 0;
+  padding: 5px;
+  width: 100%;
+}
+.devise-container input[type='checkbox'] {
+  width: auto;
+}
+.devise-container h3 {
+  margin-top: 20px;
 }
