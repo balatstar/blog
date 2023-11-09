@@ -6,6 +6,10 @@ Metrics/BlockLength:
     - 'spec/features/post_show_spec.rb'
     - 'db/migrate/20231108062857_add_devise_to_users.rb'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20231108062857_add_devise_to_users.rb'
+
 Layout/LineLength:
   Exclude:
     - 'db/seeds.rb'
