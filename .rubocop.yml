@@ -14,3 +14,7 @@ Metrics/MethodLength:
 Layout/LineLength:
   Exclude:
     - 'db/seeds.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/comments_controller.rb'

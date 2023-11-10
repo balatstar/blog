@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     @post = Post.find(params[:comment][:post_id])
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
@@ -22,7 +21,6 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
-    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
   end
 
   def new
