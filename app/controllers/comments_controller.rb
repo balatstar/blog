@@ -4,10 +4,11 @@ class CommentsController < ApplicationController
   def index
     @post = Post.find(params[:post_id])
     @comments = @post.comments
-    render json: @comments, except: %i(created_at updated_at)
+    render json: @comments, except: %i[created_at updated_at]
   end
 
   def create
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     @post = Post.find(params[:comment][:post_id])
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
@@ -21,6 +22,7 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
   end
 
   def new
