@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def post_count
     posts.count
   end
+
+  def admin?
+    role == 'admin'
+  end
 end

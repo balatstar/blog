@@ -14,9 +14,15 @@
     <header class="container-fluid header-container">
       <div class="container header-content row">
         <div class="col-6 head-title"><a href="/">Blog App</a></div>
-        <div class="col-2 head-button"><a href="/posts/new">New Post</a></div>
         <div class="col-2 head-button">
-          <%= link_to "Update Profile", edit_user_registration_path %>
+          <% if user_signed_in? %>
+            <%= link_to 'New Post', new_user_post_path(@user), class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+        <div class="col-2 head-button">
+          <% if user_signed_in? %>
+            <%= link_to "Update Profile", edit_user_registration_path %>
+          <% end %>
         </div>
         <div class="col-2 head-button">
           <% if user_signed_in? %>
