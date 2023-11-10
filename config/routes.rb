@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   devise_scope :user do
     delete '/logout', to: 'devise/sessions#destroy', as: :logout
   end
