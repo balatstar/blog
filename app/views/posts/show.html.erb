@@ -4,6 +4,12 @@
     Comments: <%= @post.comments_counter.to_i %>, Likes: <%= @post.likes_counter.to_i %>
   </p>
   <p><%= @post.text %></p>
+  <% if can? :destroy, @post %>
+  <%= form_with(model: [@post.author, @post], method: :delete, local: true, data: { confirm: 'Are you sure?' }) do |form| %>
+    <%= form.submit 'Delete', class: 'btn btn-danger' %>
+  <% end %>
+  
+  <% end %>
 </div>
 
 <div class="user-post-like">
@@ -16,11 +22,16 @@
 
 <div class="user-post-comment">
   <% @post.comments.each do |comment| %>
+    <div class="user-post-comment-item">
     <% if comment.user.present? && comment.user.respond_to?(:name) %>
-    <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
-  <% else %>
-    <p><strong>Anonymous:</strong> <%= comment.text %></p>
-  <% end %>
+    <strong><%= comment.user.name %>:</strong> <%= comment.text %>
+    <% else %>
+    <strong>Anonymous:</strong> <%= comment.text %>
+    <% end %>
+    <% if can? :destroy, comment %>
+    <%= button_to 'Delete', user_post_comment_path(@post.author, @post, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'user-comment-btn' %>
+    <% end %>
+  </div>
   <% end %>
 </div>
 
