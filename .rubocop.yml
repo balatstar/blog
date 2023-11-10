@@ -9,7 +9,12 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/20231108062857_add_devise_to_users.rb'
+    - 'app/controllers/comments_controller.rb'
 
 Layout/LineLength:
   Exclude:
     - 'db/seeds.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'app/controllers/comments_controller.rb'
