@@ -14,10 +14,22 @@
     <header class="container-fluid header-container">
       <div class="container header-content row">
         <div class="col-6 head-title"><a href="/">Blog App</a></div>
-        <div class="col-6 head-button"><a href="/posts/new">New Post</a></div>
+        <div class="col-2 head-button"><a href="/posts/new">New Post</a></div>
+        <div class="col-2 head-button">
+          <%= link_to "Update Profile", edit_user_registration_path %>
+        </div>
+        <div class="col-2 head-button">
+          <% if user_signed_in? %>
+          <%= form_tag(logout_path, method: :delete) do %>
+            <%= submit_tag "Logout" %>
+          <% end %>
+          <% end %>
+        </div>
       </div>
     </header>
     <main class="container main-container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </main>
     <footer class="container-fluid footer-container">

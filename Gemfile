@@ -29,6 +29,9 @@ gem 'jbuilder'
 # Pagination
 gem 'will_paginate', '~> 4.0'
 
+# Authentication
+gem 'devise', '~> 4.9', '>= 4.9.3'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -64,6 +67,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # smtp
+  gem 'letter_opener'
 end
 
 group :test do
