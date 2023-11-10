@@ -11,17 +11,21 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:comment][:post_id])
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
-    if @comment.save
-      redirect_to user_post_path(user_id: @comment.post.author_id, id: @comment.post_id)
-    else
-      flash.now[:error] = 'Error saving comment.'
-      render 'new'
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to user_post_path(user_id: @comment.post.author_id, id: @comment.post_id) }
+        format.json { render json: @comment, status: :created, location: user_post_comment_path(current_user, @post, @comment) }
+      else
+        flash.now[:error] = 'Error saving comment.'
+        format.html { render 'new' }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def new
-    @comment = Comment.new
     @post = Post.find(params[:post_id])
+    @comment = @post.comments.new
   end
 
   def destroy
