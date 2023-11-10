@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments, :author).paginate(page: params[:page], per_page: 5)
@@ -12,7 +14,8 @@ class PostsController < ApplicationController
   end
 ​
   def new
-    @post = current_user.posts.build
+    @user = User.find(params[:user_id])
+    @post = @user.posts.build
   end
 ​
   def create
@@ -24,7 +27,20 @@ class PostsController < ApplicationController
       render 'new'
     end
   end
-​
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:id])
+
+    if @post.destroy
+      flash[:notice] = 'Post was successfully deleted.'
+    else
+      flash[:error] = 'Error deleting post.'
+    end
+
+    redirect_to user_posts_path(@user)
+  end
+
   private
 ​
   def post_params
